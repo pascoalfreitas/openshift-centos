@@ -19,7 +19,7 @@ Para obter mais detalhes sobre as portas do Openshift, consulte este link https:
 Provisione 'n' número de nós. Neste exemplo, criei 3 nós CentOS na AWS. Você precisa fazer as alterações necessárias para poder fazer o login no CentOS com a conta de usuário 'root'.
 **Nota: Isso não é recomendado em ambiente de produção**
 
-Habilitar acesso root em /etc/ssh/sshd_config file. Remova o comentário abaixo da configuração no arquivo. Faça login com o usuário * centos * e execute estes comandos.
+Habilitar acesso root em /etc/ssh/sshd_config file. Remova o comentário abaixo da configuração no arquivo. Faça login com o usuário *centos* e execute estes comandos.
 
 ```
 $ sudo vi /etc/ssh/sshd_config
@@ -28,24 +28,24 @@ PermitRootLogin yes    	#Uncomment this line in /etc/ssh/sshd_config and save it
 $ sudo systemctl restart sshd
 ```
 
-Por padrão, o IAM não permite o login com o usuário * root * em instâncias do EC2, mas você pode usar as authroized_keys do usuário * centos * para acessá-lo.
+Por padrão, o IAM não permite o login com o usuário * root * em instâncias do EC2, mas você pode usar as authroized_keys do usuário *centos  para acessá-lo.
 
 ```
 $ sudo -s
 $ cp /home/centos/.ssh/authorized_keys /root/.ssh/authorized_keys
 ```
 
-Agora você está pronto para fazer o login com o usuário * root * com as mesmas chaves privadas que você usou para o usuário * centos *. Da mesma forma, habilite o acesso root em cada nó que fará parte do Cluster Openshift.
+Agora você está pronto para fazer o login com o usuário *root* com as mesmas chaves privadas que você usou para o usuário *centos*. Da mesma forma, habilite o acesso root em cada nó que fará parte do Cluster Openshift.
 
 # Install git and checkout openshift-centos project on the *Master* node
 
 ```
 $ yum install -y git
-$ git clone https://github.com/arunvdsharma/openshift-centos.git
+$ git clone https://github.com/pascoalfreitas/openshift-centos.git
 $ cd openshift-centos
 ```
 
-** Nota: ** Se houver erro de "caracteres inválidos" ao executar qualquer comando de script, execute o comando sed para remover caracteres inválidos, por exemplo:
+**Nota:** Se houver erro de "caracteres inválidos" ao executar qualquer comando de script, execute o comando sed para remover caracteres inválidos, por exemplo:
 ```
 $ sed -i -e 's/\r$//' install-tools.sh
 ```
